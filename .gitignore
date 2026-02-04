@@ -1,0 +1,6 @@
+
+# vagrant
+.vagrant/
+
+# vscode
+.vscode/
