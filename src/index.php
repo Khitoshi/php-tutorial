@@ -12,8 +12,9 @@ function getRoot($url) {
 }
 
 $request_uri = $_SERVER['REQUEST_URI'];
-$path = parse_url($request_uri, PHP_URL_PATH);
-
+$tmp_path = parse_url($request_uri, PHP_URL_PATH);
+$path = ($tmp_path !== '/') ? rtrim($tmp_path, '/') : $tmp_path;  
+    
 setPaths('/login', 'login.php');
 setPaths('/table', 'table.php');
 setPaths('/logout', 'logout.php');
