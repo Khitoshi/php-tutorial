@@ -1,6 +1,6 @@
 <?php
-    require_once './common/session.php';
-    require_once './common/tables/usertable.php';
+    require_once __DIR__ . '/common/session.php';
+    require_once __DIR__ . '/common/tables/usertable.php';
 
     // セッション開始
     session_start_if_none();
@@ -37,8 +37,8 @@
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['name'];
             echo "ログインしました。";
-            //ログアウトにリダイレクト
-            header("Location: table.php");
+            //テーブルにリダイレクト
+            header("Location: /table");
         }else{
             echo "ユーザ名かパスワードが間違っています。";
         }
@@ -53,7 +53,7 @@
 	</head>
 	<body>
 		<h2>ログイン</h2>
-		<form action="login.php" method="post">
+		<form action="/login" method="post">
 		  ユーザ: <input type="text" name="username" /><br/>
 		  パスワード: <input type="password" name="password" /><br/>
 		  <input type="submit" />
