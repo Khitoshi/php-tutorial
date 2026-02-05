@@ -11,7 +11,7 @@ if (isset($_SESSION['user_id'])) {
     * コメント投稿フォーム
     */
     echo '現在のユーザ名: ' . htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8') . '<br/>';
-    echo '<form action="comment.php" method="post">';
+    echo '<form action="comment" method="post">';
 	echo 'コメント: <input type="text" name="comment" /><br/>';
 	echo '<input type="hidden" name="token" value="' . htmlspecialchars($token, ENT_QUOTES, 'UTF-8') . '">';
 	echo '<input type="submit" /> </form>';

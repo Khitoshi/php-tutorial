@@ -36,13 +36,11 @@
             // ログイン成功
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['name'];
-            echo "ログインしました。";
             //テーブルにリダイレクト
             header("Location: /table");
-        }else{
+        } else {
             echo "ユーザ名かパスワードが間違っています。";
         }
-        exit();
     }
 ?>
 
