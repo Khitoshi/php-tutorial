@@ -1,5 +1,5 @@
 <?php
-require_once './common/session.php';
+require_once __DIR__ . '/common/session.php';
 
 // セッション開始
 session_start_if_none();
@@ -26,7 +26,7 @@ if (isset($_SESSION['user_id'])) {
  */
 
 //MySQLに接続
-require_once './common/database.php';
+require_once __DIR__ . '/common/database.php';
 $database = new Database();
 if($err = $database->connect()){
     echo $err;
@@ -34,7 +34,7 @@ if($err = $database->connect()){
 }
 
 // コメント取得処理
-require_once './common/tables/commenttable.php';
+require_once __DIR__ . '/common/tables/commenttable.php';
 $ct = new CommentTable();
 $rows = $ct->getComments($database);
 $database->close();

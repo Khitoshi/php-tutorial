@@ -1,5 +1,5 @@
 <?php
-    require_once 'common/session.php';
+    require_once __DIR__ . '/common/session.php';
 
     // セッション開始
     session_start_if_none();
@@ -17,7 +17,7 @@
             echo "ログアウトしました。<br>";
             session_destroy();
             // リダイレクト
-            header("Location: login.php");
+            header("Location: /login");
             exit();
         }
     }

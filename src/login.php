@@ -14,7 +14,7 @@
         }
 
         //MySQLに接続
-        require_once './common/database.php';
+        require_once __DIR__ . '/common/database.php';
         $database = new Database();
         if($err = $database->connect()){
             echo $err;
