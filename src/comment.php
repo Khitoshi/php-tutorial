@@ -1,5 +1,5 @@
 <?php
-require_once './common/session.php';
+require_once __DIR__ . '/common/session.php';
 
 // セッション開始
 session_start_if_none();
@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_id'])) {
   exit();
 }
 //MySQLに接続
-require_once './common/database.php';
+require_once __DIR__ . '/common/database.php';
 $database = new Database();
 if($err = $database->connect()){
     echo $err;
@@ -30,7 +30,7 @@ $comment = htmlspecialchars($_POST['comment'], ENT_QUOTES, 'UTF-8');
 var_dump($comment);
 
 // コメント投稿処理
-require_once './common/tables/commenttable.php';
+require_once __DIR__ . '/common/tables/commenttable.php';
 $ct = new CommentTable();
 $row = $ct->postComment($database, $_SESSION['user_id'], $comment);
 $database->close();
@@ -41,4 +41,4 @@ if ($row === null) {
 echo "コメントを投稿しました。";
 
 //リダイレクト（table.phpにリダイレクトすると自然な流れになると思います）
-header('Location: table.php');
+header('Location: /table');

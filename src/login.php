@@ -1,6 +1,6 @@
 <?php
-    require_once './common/session.php';
-    require_once './common/tables/usertable.php';
+    require_once __DIR__ . '/common/session.php';
+    require_once __DIR__ . '/common/tables/usertable.php';
 
     // セッション開始
     session_start_if_none();
@@ -14,7 +14,7 @@
         }
 
         //MySQLに接続
-        require_once './common/database.php';
+        require_once __DIR__ . '/common/database.php';
         $database = new Database();
         if($err = $database->connect()){
             echo $err;
@@ -36,13 +36,11 @@
             // ログイン成功
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['name'];
-            echo "ログインしました。";
-            //ログアウトにリダイレクト
-            header("Location: table.php");
-        }else{
+            //テーブルにリダイレクト
+            header("Location: /table");
+        } else {
             echo "ユーザ名かパスワードが間違っています。";
         }
-        exit();
     }
 ?>
 
@@ -53,7 +51,7 @@
 	</head>
 	<body>
 		<h2>ログイン</h2>
-		<form action="login.php" method="post">
+		<form action="/login" method="post">
 		  ユーザ: <input type="text" name="username" /><br/>
 		  パスワード: <input type="password" name="password" /><br/>
 		  <input type="submit" />
